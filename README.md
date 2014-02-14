@@ -1,4 +1,4 @@
-# GareEnDirect
+# GareEnDirect [![Build Status](https://secure.travis-ci.org/Florian95/GareEnDirect.png)](http://travis-ci.org/Florian95/GareEnDirect) [![Code Climate](https://codeclimate.com/github/Florian95/GareEnDirect.png)](https://codeclimate.com/github/Florian95/GareEnDirect) ![Gem Version](https://badge.fury.io/gh/Florian95%2FGareEnDirect.png)
 
 TODO: Write a gem description
 
@@ -18,7 +18,25 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+### Get all Stations
+
+```ruby
+    stations = GareEnDirect::Stations.new
+```
+
+### Get a specific station
+
+```ruby
+station = GareEnDirect::Stations.new 'Lyon Part Dieu'
+station.station_info
+```
+
+### Get next departures from a specific station
+
+```ruby
+station = GareEnDirect::Stations.new 'Lyon Part Dieu'
+station.next_departures
+```
 
 ## Contributing
 

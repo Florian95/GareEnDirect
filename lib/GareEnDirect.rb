@@ -3,6 +3,7 @@ require 'excon'
 require 'nokogiri'
 
 module GareEnDirect
-  autoload :Gares, 'GareEnDirect/gares'
+  autoload :Stations, 'GareEnDirect/stations'
   autoload :HttpClient, 'GareEnDirect/http_client'
+  autoload :Errors, 'GareEnDirect/errors'
 end

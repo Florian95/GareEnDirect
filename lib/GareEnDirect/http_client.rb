@@ -2,7 +2,7 @@ module GareEnDirect
 
   class HttpClient
 
-    URL = 'http://www.gares-en-mouvement.com'
+    URL = 'http://www.gares-en-mouvement.com/fr'
 
     def initialize
 
@@ -10,11 +10,9 @@ module GareEnDirect
 
     def get(path)
       begin
-        p URL + path
         response = Excon.get(URL + path)
         @doc = Nokogiri::HTML(response.body)
       rescue => e
-        p e
         raise 'ERROR FETCHING OR PARSING'
       end
     end
