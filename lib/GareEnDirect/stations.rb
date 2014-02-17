@@ -28,21 +28,18 @@ module GareEnDirect
     end
 
     def next_departures
-      self.conn.get('/' + self.station[:ref] + '/horaires-temps-reel/dep/')
-      self.conn.search('table.tab_horaires_tps_reel tbody tr').map do |line|
-        {
-            transporteur: line.at('td.tvs_td_type').inner_text,
-            num_train:    line.at('td.tvs_td_numero').inner_text,
-            time:         line.at('td.tvs_td_heure').inner_text,
-            destination:  line.at('td.tvs_td_originedestination').inner_text,
-            information:  line.at('td.tvs_td_situation').inner_text,
-            voie:         line.at('td.tvs_td_voie').inner_text
-        }
-      end
+      parse_horaires('dep')
+
     end
 
     def next_arrivals
-      self.conn.get('/' + self.station[:ref] + '/horaires-temps-reel/arr/')
+      parse_horaires('arr')
+    end
+
+    private
+
+    def parse_horaires(direction)
+      self.conn.get('/' + self.station[:ref] + '/horaires-temps-reel/' + direction + '/')
       self.conn.search('table.tab_horaires_tps_reel tbody tr').map do |line|
         {
             transporteur: line.at('td.tvs_td_type').inner_text,
